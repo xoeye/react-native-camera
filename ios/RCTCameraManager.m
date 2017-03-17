@@ -763,6 +763,8 @@ RCT_EXPORT_METHOD(hasFlash:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRej
     }
 
     //Start recording
+
+    self.movieFileOutput.movieFragmentInterval = kCMTimeInvalid;
     [self.movieFileOutput startRecordingToOutputFileURL:outputURL recordingDelegate:self];
 
     self.videoResolve = resolve;
