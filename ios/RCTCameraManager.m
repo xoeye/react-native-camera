@@ -150,7 +150,7 @@ RCT_CUSTOM_VIEW_PROPERTY(captureQuality, NSInteger, RCTCamera) {
       qualityString = AVCaptureSessionPreset1280x720;
       break;
     case RCTCameraCaptureSessionPreset480p:
-      qualityString = AVCaptureSessionPreset640x480;
+      qualityString = AVCaptureSessionPreset1280x720;
       break;
   }
 
