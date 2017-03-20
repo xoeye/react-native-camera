@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0314E39D1B661A460092D183 /* CameraFocusSquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 0314E39C1B661A460092D183 /* CameraFocusSquare.m */; };
+		0487599D1E7F623000476B73 /* SDAVAssetExportSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 0487599C1E7F623000476B73 /* SDAVAssetExportSession.m */; };
 		4107014D1ACB732B00C6AA39 /* RCTCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 410701481ACB732B00C6AA39 /* RCTCamera.m */; };
 		4107014E1ACB732B00C6AA39 /* RCTCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4107014A1ACB732B00C6AA39 /* RCTCameraManager.m */; };
 		454EBCF41B5082DC00AD0F86 /* NSMutableDictionary+ImageMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 454EBCF31B5082DC00AD0F86 /* NSMutableDictionary+ImageMetadata.m */; };
@@ -29,6 +30,8 @@
 /* Begin PBXFileReference section */
 		0314E39B1B661A0C0092D183 /* CameraFocusSquare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraFocusSquare.h; sourceTree = "<group>"; };
 		0314E39C1B661A460092D183 /* CameraFocusSquare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraFocusSquare.m; sourceTree = "<group>"; };
+		0487599B1E7F61FE00476B73 /* SDAVAssetExportSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDAVAssetExportSession.h; sourceTree = "<group>"; };
+		0487599C1E7F623000476B73 /* SDAVAssetExportSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDAVAssetExportSession.m; sourceTree = "<group>"; };
 		4107012F1ACB723B00C6AA39 /* libRCTCamera.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTCamera.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		410701471ACB732B00C6AA39 /* RCTCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTCamera.h; sourceTree = "<group>"; };
 		410701481ACB732B00C6AA39 /* RCTCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTCamera.m; sourceTree = "<group>"; };
@@ -53,6 +56,8 @@
 		410701241ACB719800C6AA39 = {
 			isa = PBXGroup;
 			children = (
+				0487599C1E7F623000476B73 /* SDAVAssetExportSession.m */,
+				0487599B1E7F61FE00476B73 /* SDAVAssetExportSession.h */,
 				9FE592B11CA3CBF500788287 /* RCTSensorOrientationChecker.h */,
 				9FE592B21CA3CBF500788287 /* RCTSensorOrientationChecker.m */,
 				0314E39C1B661A460092D183 /* CameraFocusSquare.m */,
@@ -130,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0314E39D1B661A460092D183 /* CameraFocusSquare.m in Sources */,
+				0487599D1E7F623000476B73 /* SDAVAssetExportSession.m in Sources */,
 				454EBCF41B5082DC00AD0F86 /* NSMutableDictionary+ImageMetadata.m in Sources */,
 				4107014E1ACB732B00C6AA39 /* RCTCameraManager.m in Sources */,
 				4107014D1ACB732B00C6AA39 /* RCTCamera.m in Sources */,
