@@ -271,6 +271,8 @@ public class RCTCameraModule extends ReactContextBaseJavaModule
             return new RuntimeException("CamcorderProfile not found in prepareMediaRecorder.");
         }
 
+        cm.videoBitRate = 1500000;
+
         // Unlock camera to make available for MediaRecorder. Note that this statement must be
         // executed before calling setCamera when configuring the MediaRecorder instance.
         mCamera.unlock();
