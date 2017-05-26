@@ -875,12 +875,12 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
         encoder.videoSettings = @
         {
         AVVideoCodecKey: AVVideoCodecH264,
-        AVVideoWidthKey: @(videoWidth),
-        AVVideoHeightKey: @(videoHeight),
+        AVVideoWidthKey: @1920,
+        AVVideoHeightKey: @1080,
         AVVideoCompressionPropertiesKey: @
             {
             AVVideoAverageBitRateKey: @1000000,
-            AVVideoProfileLevelKey: AVVideoProfileLevelH264High40,
+            AVVideoProfileLevelKey: AVVideoProfileLevelH264Baseline41,
             },
         };
         encoder.audioSettings = @
