@@ -854,13 +854,13 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
     }
     else if (self.videoTarget == RCTCameraCaptureTargetTemp) {
         NSString *fileName = [[NSProcessInfo processInfo] globallyUniqueString];
-        NSString *fullPath = [NSString stringWithFormat:@"%@%@.mp4", NSTemporaryDirectory(), fileName];
+        NSString *tempPath = [NSString stringWithFormat:@"%@%@.mp4", NSTemporaryDirectory(), fileName];
         
         NSFileManager * fileManager = [NSFileManager defaultManager];
         NSError * error = nil;
         
         //moving to destination
-        if (!([fileManager moveItemAtPath:[outputFileURL path] toPath:fullPath error:&error])) {
+        if (!([fileManager moveItemAtPath:[outputFileURL path] toPath:tempPath error:&error])) {
             self.videoReject(RCTErrorUnspecified, nil, RCTErrorWithMessage(error.description));
             return;
         }
@@ -869,7 +869,7 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
         
         //CHANGES TO VIDEO SMALL
         
-        SDAVAssetExportSession *encoder = [SDAVAssetExportSession.alloc initWithAsset:[AVAsset assetWithURL:[NSURL fileURLWithPath:fullPath]]];
+        SDAVAssetExportSession *encoder = [SDAVAssetExportSession.alloc initWithAsset:[AVAsset assetWithURL:[NSURL fileURLWithPath:tempPath]]];
         encoder.outputFileType = AVFileTypeMPEG4;
         encoder.outputURL = outputFileURL;
         encoder.videoSettings = @
@@ -893,6 +893,13 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
         
         [encoder exportAsynchronouslyWithCompletionHandler:^
          {
+             
+             /// Cleanup after ourselves
+             NSError *cleanupErr = nil;
+             if (![fileManager removeItemAtPath:tempPath error:&cleanupErr]) {
+                 NSLog(@"Tmp cleanup failed %@", cleanupErr)
+             }
+             
              if (encoder.status == AVAssetExportSessionStatusCompleted)
              {
                  NSLog(@"Video export succeeded");
