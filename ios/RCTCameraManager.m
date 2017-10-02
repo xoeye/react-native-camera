@@ -897,7 +897,7 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
              /// Cleanup after ourselves
              NSError *cleanupErr = nil;
              if (![fileManager removeItemAtPath:tempPath error:&cleanupErr]) {
-                 NSLog(@"Tmp cleanup failed %@", cleanupErr)
+                 NSLog(@"Tmp cleanup failed %@", cleanupErr);
              }
              
              if (encoder.status == AVAssetExportSessionStatusCompleted)
