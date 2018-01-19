@@ -9,6 +9,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.util.Log;
 import android.view.Surface;
 
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -20,6 +21,8 @@ interface RCTSensorOrientationListener {
 public class RCTSensorOrientationChecker {
 
     int mOrientation = 0;
+
+    private Boolean sensorEnabled = false;
     private SensorEventListener mSensorEventListener;
     private SensorManager mSensorManager;
     private RCTSensorOrientationListener mListener = null;
@@ -34,20 +37,23 @@ public class RCTSensorOrientationChecker {
      * Call on activity onResume()
      */
     public void onResume() {
-        mSensorManager.registerListener(mSensorEventListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+        this.sensorEnabled = mSensorManager.registerListener(mSensorEventListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_FASTEST);
     }
 
     /**
      * Call on activity onPause()
      */
     public void onPause() {
-        mSensorManager.unregisterListener(mSensorEventListener);
+        if (this.sensorEnabled) {
+            mSensorManager.unregisterListener(mSensorEventListener);
+        }
     }
 
     private class Listener implements SensorEventListener {
 
         @Override
         public void onSensorChanged(SensorEvent event) {
+
             float x = event.values[0];
             float y = event.values[1];
 
@@ -76,6 +82,10 @@ public class RCTSensorOrientationChecker {
     }
 
     public void registerOrientationListener(RCTSensorOrientationListener listener) {
+        if (!this.sensorEnabled) {
+            listener.orientationEvent();
+            return;
+        }
         this.mListener = listener;
     }
 
